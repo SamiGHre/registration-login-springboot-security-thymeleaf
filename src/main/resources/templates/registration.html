@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="ISO-8859-1">
     <title>Page Title</title>
@@ -21,7 +21,44 @@
     </div>
 </nav>
 
-<h1>My First Heading</h1>
+<!--Create HTML Registration Form-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <!--success-->
+            <div class="${param.success}">
+                <div class="alert alert-info">Successfully Registered!</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h1>Registration</h1>
+<form th:action="@{/registration}" method="post" th:object="${user}">
+    <div class="form-group">
+        <label class="control-label" for="firstName">First Name</label>
+        <input id="firstName" class="form-control" th:field="*{firstName}" required autofocus="autofocus"/>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="lastName">First Name</label>
+        <input id="lastName" class="form-control" th:field="*{lastName}" required autofocus="autofocus" />
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="email">Email</label>
+        <input id="email" class="form-control" th:field="*{email}" required autofocus="autofocus" />
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="password">Password</label>
+        <input id="password" class="form-control" type="password" th:field="*{password}" required autofocus="autofocus" />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Register</button>
+        <span>Already registered? <a href="/" th:href="@{/Login}">Login</a></span>
+    </div>
+</form>
+
+
 <p>My first paragraph.</p>
 
 </body>
